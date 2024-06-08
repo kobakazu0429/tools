@@ -44,7 +44,7 @@ import Layout from "../layouts/main.astro";
     }
   };
 
-  document.getElementById("run")?.addEventListener("click", async (e) => {
+  document.getElementById("run")?.addEventListener("click", async () => {
     try {
       const permission = await navigator.permissions.query({
         // @ts-expect-error
