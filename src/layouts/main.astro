@@ -1,0 +1,41 @@
+---
+// import Sidebar from "./sidebar.astro";
+const { title } = Astro.props;
+const links = [
+  {
+    path: "/extract-urls",
+    label: "Extract URLs",
+  },
+];
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- <Sidebar /> -->
+    <!-- <slot /> -->
+    <div class="flex">
+      <aside class="bg-surface3 w-col-span-3 h-screen">
+        <ul>
+          {
+            links.map(({ path, label }) => (
+              <li>
+                <a href={path} class="text-link1">
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+      <main class="w-full">
+        <h1 class="typography-32">{title}</h1>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

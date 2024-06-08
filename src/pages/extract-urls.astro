@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/main.astro";
+---
+
+<Layout title="Extract URLs">
+  <button
+    id="run"
+    class="inline-grid items-center justify-center rounded-oval typography-14 font-bold px-24 bg-brand hover:bg-brand-hover disabled:bg-brand-disabled active:bg-brand-press text-text5 hover:text-text5-hover disabled:text-text5-disabled active:text-text5-press transition-colors disabled:opacity-30 h-40"
+  >
+    Paste & Analyze
+  </button>
+
+  <h2 class="typography-20">message</h2>
+  <div id="message"></div>
+</Layout>
+
+<script>
+  const urlRe =
+    /href="(?<url>https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))"/g;
+
+  const decode = (raw: string) => {
+    try {
+      const url = new URL(raw);
+      for (const [_key, value] of url.searchParams) {
+        console.log(value);
+        const decoded = atob(value);
+        console.log(decoded);
+        if (decoded.startsWith("http")) {
+          return decoded;
+        }
+      }
+      return raw;
+    } catch {
+      return raw;
+    }
+  };
+
+  const notify = (message: string) => {
+    const el = document.getElementById("message");
+    if (!el) {
+      window.alert(message);
+    } else {
+      el.innerText = message;
+    }
+  };
+
+  document.getElementById("run")?.addEventListener("click", async (e) => {
+    try {
+      const permission = await navigator.permissions.query({
+        // @ts-expect-error
+        name: "clipboard-read",
+      });
+      if (permission.state === "denied") {
+        throw new Error("Not allowed to read clipboard.");
+      }
+
+      const clipboardContents = await navigator.clipboard.read();
+      let result: string[] = [];
+      for (const item of clipboardContents) {
+        const blob = await item.getType("text/html");
+        const text = await blob.text();
+        const urls = await Promise.all(
+          [...text.matchAll(urlRe)]
+            .filter(({ groups }) => groups?.url)
+            .map(({ groups }) => decode(groups!.url))
+        );
+        result.push(...urls);
+      }
+      const data = result.join("\n");
+      await navigator.clipboard.writeText(data);
+      notify(`pasted !\n\n${data}`);
+    } catch (error: any) {
+      console.error(error);
+      notify(error.message);
+    }
+  });
+</script>
