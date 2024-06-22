@@ -16,15 +16,17 @@ const links = [
     <title>{title}</title>
   </head>
   <body>
-    <!-- <Sidebar /> -->
-    <!-- <slot /> -->
     <div class="flex">
-      <aside class="bg-surface3 w-col-span-3 h-screen">
-        <ul>
+      <aside class="bg-surface3 w-col-span-3 h-screen p-24">
+        <h2 class="typography-20">tools</h2>
+        <ul class="list-disc">
           {
             links.map(({ path, label }) => (
-              <li>
-                <a href={path} class="text-link1">
+              <li class="ml-24">
+                <a
+                  href={path}
+                  class="typography-16 text-link1 hover:text-link1-hover active:text-link1-press focus:text-link1-outline"
+                >
                   {label}
                 </a>
               </li>
@@ -32,7 +34,7 @@ const links = [
           }
         </ul>
       </aside>
-      <main class="w-full">
+      <main class="w-full p-24">
         <h1 class="typography-32">{title}</h1>
         <slot />
       </main>
