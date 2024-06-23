@@ -1,0 +1,135 @@
+---
+import Layout from "../layouts/main.astro";
+---
+
+<Layout title="Diff Word">
+  <section class="flex">
+    <div>
+      <p class="typography-16">input: A and B</p>
+      <p class="typography-16">output: Same and Diff</p>
+    </div>
+    <div>
+      <img src="./diff-word_chart.svg" class="w-col-span-4" />
+    </div>
+  </section>
+
+  <section class="grid grid-cols-4 grid-rows-[1fr_2fr] gap-fixed">
+    <div class="row-start-1 row-end-2 col-start-1 col-end-3">
+      <h3 class="typography-20 font-bold flex">
+        A_<input type="text" class="inline-block w-full" placeholder="A" />
+      </h3>
+      <textarea class="w-full text-text2 bg-surface3 rounded-4 p-8" rows="10"
+      ></textarea>
+    </div>
+    <div class="row-start-1 row-end-2 col-start-3 col-end-5">
+      <h3 class="typography-20 font-bold flex">
+        B_<input type="text" class="inline-block w-full" placeholder="B" />
+      </h3>
+      <textarea class="w-full text-text2 bg-surface3 rounded-4 p-8" rows="10"
+      ></textarea>
+    </div>
+    <div class="row-start-2 row-end-3 col-start-1 col-end-2">
+      <h3 class="typography-20 font-bold">A ∩ B (readonly)</h3>
+      <textarea
+        class="w-full text-text2 bg-surface3 rounded-4 p-8"
+        rows="20"
+        readonly></textarea>
+    </div>
+    <div class="row-start-2 row-end-3 col-start-2 col-end-3">
+      <h3 class="typography-20 font-bold">A' + B' (readonly)</h3>
+      <textarea
+        class="w-full text-text2 bg-surface3 rounded-4 p-8"
+        rows="20"
+        readonly></textarea>
+    </div>
+    <div class="row-start-2 row-end-3 col-start-3 col-end-4">
+      <h3 class="typography-20 font-bold">A' (readonly)</h3>
+      <textarea
+        class="w-full text-text2 bg-surface3 rounded-4 p-8"
+        rows="20"
+        readonly></textarea>
+    </div>
+    <div class="row-start-2 row-end-3 col-start-4 col-end-5">
+      <h3 class="typography-20 font-bold">B' (readonly)</h3>
+      <textarea
+        class="w-full text-text2 bg-surface3 rounded-4 p-8"
+        rows="20"
+        readonly></textarea>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const [
+    aTextarea,
+    bTextarea,
+    sameTextarea,
+    diffTextarea,
+    diffATextarea,
+    diffBTextarea,
+  ] = Array.from(document.querySelectorAll("textarea"));
+
+  const [aInput, bInput, sameInput, diffInput, diffAInput, diffBInput] = [
+    ...Array.from(document.querySelectorAll("input")),
+    ...Array.from(document.querySelectorAll("h3")).slice(2),
+  ];
+
+  // from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#implementing_basic_set_operations
+  const intersection = (setA: Set<any>, setB: Set<any>) => {
+    const _intersection = new Set();
+    for (const elem of setB) {
+      if (setA.has(elem)) {
+        _intersection.add(elem);
+      }
+    }
+    return _intersection;
+  };
+
+  const symmetricDifference = (setA: Set<any>, setB: Set<any>) => {
+    const _difference = new Set(setA);
+    for (const elem of setB) {
+      if (_difference.has(elem)) {
+        _difference.delete(elem);
+      } else {
+        _difference.add(elem);
+      }
+    }
+    return _difference;
+  };
+
+  const difference = (setA: Set<any>, setB: Set<any>) => {
+    const _difference = new Set(setA);
+    for (const elem of setB) {
+      _difference.delete(elem);
+    }
+    return _difference;
+  };
+
+  const check = () => {
+    const a = new Set(aTextarea.value.split("\n").filter((v) => v !== ""));
+    const b = new Set(bTextarea.value.split("\n").filter((v) => v !== ""));
+    sameTextarea.value = Array.from(intersection(a, b).values()).join("\n");
+    diffTextarea.value = Array.from(symmetricDifference(a, b).values()).join(
+      "\n"
+    );
+    diffATextarea.value = Array.from(difference(a, b).values()).join("\n");
+    diffBTextarea.value = Array.from(difference(b, a).values()).join("\n");
+  };
+
+  aTextarea.addEventListener("input", () => check());
+  bTextarea.addEventListener("input", () => check());
+
+  const chnageInputName = () => {
+    const a =
+      aInput instanceof HTMLInputElement ? aInput.value : aInput.textContent;
+    const b =
+      bInput instanceof HTMLInputElement ? bInput.value : bInput.textContent;
+
+    sameInput.textContent = `A_${a} ∩ B_${b} (readonly)`;
+    diffInput.textContent = `A_${a}' + B_${b}' (readonly)`;
+    diffAInput.textContent = `A_${a}' (readonly)`;
+    diffBInput.textContent = `B_${b}' (readonly)`;
+  };
+  aInput.addEventListener("input", () => chnageInputName());
+  bInput.addEventListener("input", () => chnageInputName());
+</script>

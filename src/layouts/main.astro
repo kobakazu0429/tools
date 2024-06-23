@@ -3,6 +3,10 @@
 const { title } = Astro.props;
 const links = [
   {
+    path: "./diff-word",
+    label: "Diff Word",
+  },
+  {
     path: "./extract-urls",
     label: "Extract URLs",
   },
@@ -18,14 +22,14 @@ const links = [
   <body>
     <div class="flex">
       <aside class="bg-surface3 w-col-span-3 h-screen p-24">
-        <h2 class="typography-20">tools</h2>
+        <h2 class="typography-16 font-bold">tools</h2>
         <ul class="list-disc">
           {
             links.map(({ path, label }) => (
-              <li class="ml-24">
+              <li class="ml-24 hover:bg-surface3-hover">
                 <a
                   href={path}
-                  class="typography-16 text-link1 hover:text-link1-hover active:text-link1-press focus:text-link1-outline"
+                  class="typography-16 text-link1 hover:text-link1-hover active:text-link1-press focus:text-link1-outline w-full inline-block"
                 >
                   {label}
                 </a>
@@ -35,7 +39,7 @@ const links = [
         </ul>
       </aside>
       <main class="w-full p-24">
-        <h1 class="typography-32">{title}</h1>
+        <h1 class="typography-32 font-bold">{title}</h1>
         <slot />
       </main>
     </div>
