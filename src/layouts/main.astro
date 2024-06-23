@@ -3,11 +3,11 @@
 const { title } = Astro.props;
 const links = [
   {
-    path: "./diff-word",
+    path: "diff-word",
     label: "Diff Word",
   },
   {
-    path: "./extract-urls",
+    path: "extract-urls",
     label: "Extract URLs",
   },
 ];
@@ -28,7 +28,7 @@ const links = [
             links.map(({ path, label }) => (
               <li class="ml-24 hover:bg-surface3-hover">
                 <a
-                  href={path}
+                  href={`${import.meta.env.BASE_URL}${path}`}
                   class="typography-16 text-link1 hover:text-link1-hover active:text-link1-press focus:text-link1-outline w-full inline-block"
                 >
                   {label}

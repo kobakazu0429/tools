@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/main.astro";
-import chart from "../images/diff-word_chart.svg";
+import chart from "../../public//diff-word_chart.svg";
 ---
 
 <Layout title="Diff Word">
@@ -11,7 +10,7 @@ import chart from "../images/diff-word_chart.svg";
       <p class="typography-16">output: Same and Diff</p>
     </div>
     <div>
-      <Image src={chart} width={400} alt="" />
+      <img src={chart.src} width={400} />
     </div>
   </section>
 
