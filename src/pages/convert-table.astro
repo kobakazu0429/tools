@@ -1,0 +1,226 @@
+---
+import Layout from "../layouts/main.astro";
+---
+
+<Layout title="Convert Table">
+  <section class="flex flex-col gap-fixed">
+    <div>
+      <h2 class="typography-20 font-bold">Input (CSV / TSV)</h2>
+      <textarea
+        id="input"
+        class="w-full text-text2 bg-surface3 rounded-4 p-8 font-mono"
+        rows="10"
+        placeholder="CSV or TSV data here...&#10;name,age,city&#10;Alice,30,Tokyo&#10;Bob,25,Osaka"
+      ></textarea>
+    </div>
+
+    <div class="flex items-center gap-fixed">
+      <label class="typography-16 flex items-center gap-8">
+        <input type="radio" name="delimiter" value="auto" checked />
+        Auto
+      </label>
+      <label class="typography-16 flex items-center gap-8">
+        <input type="radio" name="delimiter" value="," />
+        CSV (comma)
+      </label>
+      <label class="typography-16 flex items-center gap-8">
+        <input type="radio" name="delimiter" value="\t" />
+        TSV (tab)
+      </label>
+      <label class="typography-16 flex items-center gap-8">
+        <input type="checkbox" id="hasHeader" checked />
+        First row is header
+      </label>
+    </div>
+
+    <div class="flex gap-fixed">
+      <button
+        id="convert"
+        class="inline-grid items-center justify-center rounded-oval typography-14 font-bold px-24 bg-brand hover:bg-brand-hover disabled:bg-brand-disabled active:bg-brand-press text-text5 hover:text-text5-hover disabled:text-text5-disabled active:text-text5-press transition-colors disabled:opacity-30 h-40"
+      >
+        Convert
+      </button>
+      <button
+        id="copy"
+        class="inline-grid items-center justify-center rounded-oval typography-14 font-bold px-24 bg-brand hover:bg-brand-hover disabled:bg-brand-disabled active:bg-brand-press text-text5 hover:text-text5-hover disabled:text-text5-disabled active:text-text5-press transition-colors disabled:opacity-30 h-40"
+      >
+        Copy HTML Table to Clipboard
+      </button>
+    </div>
+
+    <div id="message" class="typography-16"></div>
+
+    <div>
+      <h2 class="typography-20 font-bold">Preview</h2>
+      <div id="preview" class="overflow-auto"></div>
+    </div>
+
+    <div>
+      <h2 class="typography-20 font-bold">HTML Output</h2>
+      <textarea
+        id="output"
+        class="w-full text-text2 bg-surface3 rounded-4 p-8 font-mono"
+        rows="10"
+        readonly
+      ></textarea>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  #preview table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  #preview th,
+  #preview td {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    text-align: left;
+  }
+  #preview th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  #preview tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+
+<script>
+  const inputEl = document.getElementById("input") as HTMLTextAreaElement;
+  const outputEl = document.getElementById("output") as HTMLTextAreaElement;
+  const previewEl = document.getElementById("preview") as HTMLDivElement;
+  const messageEl = document.getElementById("message") as HTMLDivElement;
+  const hasHeaderEl = document.getElementById("hasHeader") as HTMLInputElement;
+
+  const getDelimiter = (): string => {
+    const selected = document.querySelector<HTMLInputElement>(
+      'input[name="delimiter"]:checked'
+    );
+    const value = selected?.value ?? "auto";
+    if (value === "auto") {
+      const text = inputEl.value;
+      const tabCount = (text.match(/\t/g) || []).length;
+      const commaCount = (text.match(/,/g) || []).length;
+      return tabCount > commaCount ? "\t" : ",";
+    }
+    return value === "\\t" ? "\t" : value;
+  };
+
+  const parseCsvLine = (line: string, delimiter: string): string[] => {
+    const result: string[] = [];
+    let current = "";
+    let inQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      if (inQuotes) {
+        if (char === '"') {
+          if (i + 1 < line.length && line[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = false;
+          }
+        } else {
+          current += char;
+        }
+      } else {
+        if (char === '"') {
+          inQuotes = true;
+        } else if (char === delimiter) {
+          result.push(current);
+          current = "";
+        } else {
+          current += char;
+        }
+      }
+    }
+    result.push(current);
+    return result;
+  };
+
+  const escapeHtml = (text: string): string => {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  };
+
+  const convert = () => {
+    const text = inputEl.value.trim();
+    if (!text) {
+      outputEl.value = "";
+      previewEl.innerHTML = "";
+      messageEl.textContent = "";
+      return;
+    }
+
+    const delimiter = getDelimiter();
+    const lines = text.split("\n").filter((line) => line.trim() !== "");
+    const rows = lines.map((line) => parseCsvLine(line, delimiter));
+    const hasHeader = hasHeaderEl.checked;
+
+    let html = "<table>\n";
+
+    if (hasHeader && rows.length > 0) {
+      html += "  <thead>\n    <tr>\n";
+      for (const cell of rows[0]) {
+        html += `      <th>${escapeHtml(cell.trim())}</th>\n`;
+      }
+      html += "    </tr>\n  </thead>\n";
+    }
+
+    const bodyStart = hasHeader ? 1 : 0;
+    if (bodyStart < rows.length) {
+      html += "  <tbody>\n";
+      for (let i = bodyStart; i < rows.length; i++) {
+        html += "    <tr>\n";
+        for (const cell of rows[i]) {
+          html += `      <td>${escapeHtml(cell.trim())}</td>\n`;
+        }
+        html += "    </tr>\n";
+      }
+      html += "  </tbody>\n";
+    }
+
+    html += "</table>";
+
+    outputEl.value = html;
+    previewEl.innerHTML = html;
+    messageEl.textContent = `${rows.length} rows parsed (delimiter: ${delimiter === "\t" ? "TAB" : `"${delimiter}"`})`;
+  };
+
+  const copyToClipboard = async () => {
+    const html = outputEl.value;
+    if (!html) {
+      messageEl.textContent = "Nothing to copy. Convert first.";
+      return;
+    }
+
+    try {
+      const blob = new Blob([html], { type: "text/html" });
+      const plainBlob = new Blob([html], { type: "text/plain" });
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": blob,
+          "text/plain": plainBlob,
+        }),
+      ]);
+      messageEl.textContent = "Copied! Paste into Notion with Ctrl+V / Cmd+V.";
+    } catch (error: any) {
+      console.error(error);
+      messageEl.textContent = `Copy failed: ${error.message}`;
+    }
+  };
+
+  document.getElementById("convert")?.addEventListener("click", convert);
+  document.getElementById("copy")?.addEventListener("click", copyToClipboard);
+  inputEl.addEventListener("input", convert);
+  hasHeaderEl.addEventListener("change", convert);
+  document.querySelectorAll('input[name="delimiter"]').forEach((el) => {
+    el.addEventListener("change", convert);
+  });
+</script>
