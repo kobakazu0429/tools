@@ -13,7 +13,7 @@ dependencies:
     version: 5.1.0(astro@4.10.3)(tailwindcss@3.4.19)
   '@charcoal-ui/tailwind-config':
     specifier: ^3.13.1
-    version: 3.13.1(csstype@3.2.3)(postcss@8.4.38)(tailwindcss@3.4.19)
+    version: 3.21.0(csstype@3.2.3)(postcss@8.4.38)(tailwindcss@3.4.19)
   astro:
     specifier: ^4.10.0
     version: 4.10.3(typescript@5.9.3)
@@ -365,11 +365,9 @@ packages:
       - supports-color
     dev: false
 
-  /@babel/runtime@7.24.7:
-    resolution: {integrity: sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==}
+  /@babel/runtime@7.29.2:
+    resolution: {integrity: sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g==}
     engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.14.1
     dev: false
 
   /@babel/template@7.24.7:
@@ -408,37 +406,37 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@charcoal-ui/foundation@3.13.1:
-    resolution: {integrity: sha512-bmAZH9Y8WRpFIyBmLcwWz0ohqOYQZMPApfnsNvyDjrp7p5Nb9bx/Zu2Qbun7H2b8ywiAbbHF6L7ctqMeBono0Q==}
+  /@charcoal-ui/foundation@3.21.0:
+    resolution: {integrity: sha512-aiJKDWphgBG3F/bCtouW2pQhW4SBLBlOFUo/kQGaaQz7PkJCZE7x+OTFhv+wsxWdaf7bQ7JaqZyK7G84mHCEng==}
     dev: false
 
-  /@charcoal-ui/tailwind-config@3.13.1(csstype@3.2.3)(postcss@8.4.38)(tailwindcss@3.4.19):
-    resolution: {integrity: sha512-adGO1xndZfNY1z7Vi6jXpo/2ZI9AYwqOsEUjzVPspUxzqMgW8pccEZspNefMIuxM87dogmCRsu+rkUOxq85YSQ==}
+  /@charcoal-ui/tailwind-config@3.21.0(csstype@3.2.3)(postcss@8.4.38)(tailwindcss@3.4.19):
+    resolution: {integrity: sha512-GLjZmLC+hmAnpsn/eew4T+8P3y5aCEjc9Qb5uRDet+iPLazDAyR97cTEZN7VMSAZAH1QDHAqOMw45UszLvqGfQ==}
     peerDependencies:
       csstype: '>=3.0.0'
       postcss: '>=7.0.32'
       tailwindcss: '>=1.4.6'
     dependencies:
-      '@charcoal-ui/foundation': 3.13.1
-      '@charcoal-ui/theme': 3.13.1
-      '@charcoal-ui/utils': 3.13.1
+      '@charcoal-ui/foundation': 3.21.0
+      '@charcoal-ui/theme': 3.21.0
+      '@charcoal-ui/utils': 3.21.0
       csstype: 3.2.3
       postcss: 8.4.38
       tailwindcss: 3.4.19
     dev: false
 
-  /@charcoal-ui/theme@3.13.1:
-    resolution: {integrity: sha512-lj34GsrjeYzhXNgrvx1+ca5O5wlPJ/zTI9JoZu+1xl/w2tlxNcW3cGwmaanlaOGsLBtkhhkB1ATb1L4AosTAzQ==}
+  /@charcoal-ui/theme@3.21.0:
+    resolution: {integrity: sha512-O747k3BXXybeJD72OL0zojffQgTugpW/ClJIRQlPEbc+QZvL8DOnbje4Ch4y4wDaIc8f339R/QWXo2i9vC7tzw==}
     dependencies:
-      '@charcoal-ui/foundation': 3.13.1
-      '@charcoal-ui/utils': 3.13.1
+      '@charcoal-ui/foundation': 3.21.0
+      '@charcoal-ui/utils': 3.21.0
       polished: 4.3.1
     dev: false
 
-  /@charcoal-ui/utils@3.13.1:
-    resolution: {integrity: sha512-JfYCB44ektGhUeebXlGHrIQwdSNdVdlfewft5pXLfT2YjbQaj2lyhoK1q0OVRGyCRnqOWKOOmOgv9bxfh+jccw==}
+  /@charcoal-ui/utils@3.21.0:
+    resolution: {integrity: sha512-0RY4YxLHGjPmYOGufGhkTMdEYkhVDKjNnnGYHsB/Ah8crw8wxs4TfD+s35ath7pCtQ9ZzdRgVLYvzk2jfTX++w==}
     dependencies:
-      '@charcoal-ui/foundation': 3.13.1
+      '@charcoal-ui/foundation': 3.21.0
       polished: 4.3.1
     dev: false
 
@@ -3042,7 +3040,7 @@ packages:
     resolution: {integrity: sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==}
     engines: {node: '>=10'}
     dependencies:
-      '@babel/runtime': 7.24.7
+      '@babel/runtime': 7.29.2
     dev: false
 
   /postcss-import@15.1.0(postcss@8.5.8):
@@ -3189,10 +3187,6 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
-    dev: false
-
-  /regenerator-runtime@0.14.1:
-    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
     dev: false
 
   /rehype-parse@9.0.0:
