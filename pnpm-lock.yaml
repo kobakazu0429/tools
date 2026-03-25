@@ -13,16 +13,16 @@ dependencies:
     version: 5.1.0(astro@4.10.3)(tailwindcss@3.4.19)
   '@charcoal-ui/tailwind-config':
     specifier: ^3.13.1
-    version: 3.13.1(csstype@3.2.3)(postcss@8.4.38)(tailwindcss@3.4.19)
+    version: 3.13.1(csstype@3.2.3)(postcss@8.5.8)(tailwindcss@3.4.19)
   astro:
     specifier: ^4.10.0
     version: 4.10.3(typescript@5.9.3)
   autoprefixer:
     specifier: ^10.4.19
-    version: 10.4.19(postcss@8.4.38)
+    version: 10.4.19(postcss@8.5.8)
   postcss:
     specifier: ^8.4.38
-    version: 8.4.38
+    version: 8.5.8
   tailwindcss:
     specifier: ^3.4.4
     version: 3.4.19
@@ -141,9 +141,9 @@ packages:
       tailwindcss: ^3.0.24
     dependencies:
       astro: 4.10.3(typescript@5.9.3)
-      autoprefixer: 10.4.19(postcss@8.4.38)
-      postcss: 8.4.38
-      postcss-load-config: 4.0.2(postcss@8.4.38)
+      autoprefixer: 10.4.19(postcss@8.5.8)
+      postcss: 8.5.8
+      postcss-load-config: 4.0.2(postcss@8.5.8)
       tailwindcss: 3.4.19
     transitivePeerDependencies:
       - ts-node
@@ -169,7 +169,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/highlight': 7.24.7
-      picocolors: 1.0.1
+      picocolors: 1.1.1
     dev: false
 
   /@babel/compat-data@7.24.7:
@@ -328,7 +328,7 @@ packages:
       '@babel/helper-validator-identifier': 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.1
     dev: false
 
   /@babel/parser@7.24.7:
@@ -412,7 +412,7 @@ packages:
     resolution: {integrity: sha512-bmAZH9Y8WRpFIyBmLcwWz0ohqOYQZMPApfnsNvyDjrp7p5Nb9bx/Zu2Qbun7H2b8ywiAbbHF6L7ctqMeBono0Q==}
     dev: false
 
-  /@charcoal-ui/tailwind-config@3.13.1(csstype@3.2.3)(postcss@8.4.38)(tailwindcss@3.4.19):
+  /@charcoal-ui/tailwind-config@3.13.1(csstype@3.2.3)(postcss@8.5.8)(tailwindcss@3.4.19):
     resolution: {integrity: sha512-adGO1xndZfNY1z7Vi6jXpo/2ZI9AYwqOsEUjzVPspUxzqMgW8pccEZspNefMIuxM87dogmCRsu+rkUOxq85YSQ==}
     peerDependencies:
       csstype: '>=3.0.0'
@@ -423,7 +423,7 @@ packages:
       '@charcoal-ui/theme': 3.13.1
       '@charcoal-ui/utils': 3.13.1
       csstype: 3.2.3
-      postcss: 8.4.38
+      postcss: 8.5.8
       tailwindcss: 3.4.19
     dev: false
 
@@ -1402,7 +1402,7 @@ packages:
       - typescript
     dev: false
 
-  /autoprefixer@10.4.19(postcss@8.4.38):
+  /autoprefixer@10.4.19(postcss@8.5.8):
     resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -1414,7 +1414,7 @@ packages:
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
-      postcss: 8.4.38
+      postcss: 8.5.8
       postcss-value-parser: 4.2.0
     dev: false
 
@@ -2827,12 +2827,6 @@ packages:
     hasBin: true
     dev: false
 
-  /nanoid@3.3.7:
-    resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-    dev: false
-
   /nlcst-to-string@3.1.1:
     resolution: {integrity: sha512-63mVyqaqt0cmn2VcI2aH6kxe1rLAmSROqHMA0i4qqg1tidkfExgpb0FGMikMCn86mw5dFtBtEANfmSSK7TjNHw==}
     dependencies:
@@ -3067,7 +3061,7 @@ packages:
       postcss: 8.5.8
     dev: false
 
-  /postcss-load-config@4.0.2(postcss@8.4.38):
+  /postcss-load-config@4.0.2(postcss@8.5.8):
     resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -3080,7 +3074,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.38
+      postcss: 8.5.8
       yaml: 2.4.3
     dev: false
 
@@ -3127,15 +3121,6 @@ packages:
 
   /postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
-    dev: false
-
-  /postcss@8.4.38:
-    resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: 3.3.7
-      picocolors: 1.0.1
-      source-map-js: 1.2.0
     dev: false
 
   /postcss@8.5.8:
@@ -3482,11 +3467,6 @@ packages:
 
   /sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
-    dev: false
-
-  /source-map-js@1.2.0:
-    resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
-    engines: {node: '>=0.10.0'}
     dev: false
 
   /source-map-js@1.2.1:
@@ -3921,7 +3901,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.21.5
-      postcss: 8.4.38
+      postcss: 8.5.8
       rollup: 4.18.0
     optionalDependencies:
       fsevents: 2.3.3
