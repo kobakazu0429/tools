@@ -15,8 +15,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.5(astro@4.16.19(rollup@4.59.1)(typescript@5.9.3))(tailwindcss@3.4.19(yaml@2.8.3))
       '@charcoal-ui/tailwind-config':
-        specifier: ^3.13.1
-        version: 3.21.0(csstype@3.2.3)(postcss@8.5.8)(tailwindcss@3.4.19(yaml@2.8.3))
+        specifier: ^4.0.0
+        version: 4.18.0(csstype@3.2.3)(postcss@8.5.8)(tailwindcss@3.4.19(yaml@2.8.3))
       astro:
         specifier: ^4.10.0
         version: 4.16.19(rollup@4.59.1)(typescript@5.9.3)
@@ -174,21 +174,24 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@charcoal-ui/foundation@3.21.0':
-    resolution: {integrity: sha512-aiJKDWphgBG3F/bCtouW2pQhW4SBLBlOFUo/kQGaaQz7PkJCZE7x+OTFhv+wsxWdaf7bQ7JaqZyK7G84mHCEng==}
+  '@charcoal-ui/foundation@4.18.0':
+    resolution: {integrity: sha512-pb4wviPbzkDKqsdQLVCO4TejtBwz5kc1tgPmqbOuKR/RRgdQKWY6pu1VR5aXRHv6jnSYH1WfCIBNyl0NYYSDsg==}
 
-  '@charcoal-ui/tailwind-config@3.21.0':
-    resolution: {integrity: sha512-GLjZmLC+hmAnpsn/eew4T+8P3y5aCEjc9Qb5uRDet+iPLazDAyR97cTEZN7VMSAZAH1QDHAqOMw45UszLvqGfQ==}
+  '@charcoal-ui/icon-files@4.18.0':
+    resolution: {integrity: sha512-0JC7eRif/jfOGBLVpeZkOyq1pYd3hvwGlcV7Jh0d7FiGLnOhtZC2lH4tgUQ8bijSyuo3nOnEcyfRo2b//Jde8A==}
+
+  '@charcoal-ui/tailwind-config@4.18.0':
+    resolution: {integrity: sha512-bR6b4bknbLDIA+4/fAXb9pHpst4oX3cl7NAo3LXB+cacztLM2HhNH6Iz/nSUNzhowI12LZaAkn/mycHubVLPQA==}
     peerDependencies:
       csstype: '>=3.0.0'
       postcss: '>=7.0.32'
       tailwindcss: '>=1.4.6'
 
-  '@charcoal-ui/theme@3.21.0':
-    resolution: {integrity: sha512-O747k3BXXybeJD72OL0zojffQgTugpW/ClJIRQlPEbc+QZvL8DOnbje4Ch4y4wDaIc8f339R/QWXo2i9vC7tzw==}
+  '@charcoal-ui/theme@4.18.0':
+    resolution: {integrity: sha512-TIAoijQRIx3Z9oQjrr3oJQcl1oh9uOrefWyQJjXEzFNRwZNWwNhpVMXjw8ZB3RcYmUF2I2ijuDXt05VuDFzP3g==}
 
-  '@charcoal-ui/utils@3.21.0':
-    resolution: {integrity: sha512-0RY4YxLHGjPmYOGufGhkTMdEYkhVDKjNnnGYHsB/Ah8crw8wxs4TfD+s35ath7pCtQ9ZzdRgVLYvzk2jfTX++w==}
+  '@charcoal-ui/utils@4.18.0':
+    resolution: {integrity: sha512-5uE1NVpDBZHqvZY+hnI8gxEoiLJdJwdUhV7W2cpT7VzPM2F8S5W6wBzO/9P9WpX+Zoy+/jYV2Uh4wS1er4pB5w==}
 
   '@emmetio/abbreviation@2.3.3':
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
@@ -853,6 +856,12 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
+  change-case-all@2.1.0:
+    resolution: {integrity: sha512-v6b0WWWkZUMHVuYk82l+WROgkUm4qEN2w5hKRNWtEOYwWqUGoi8C6xH0l1RLF1EoWqDFK6MFclmN3od6ws3/uw==}
+
+  change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
+
   character-entities-html4@2.1.0:
     resolution: {integrity: sha512-1v7fgQRj6hnSwFpq1Eu0ynr/CDEw0rXo2B61qXrLNdHZmPKgb7fqS1a2JwF0rISo9q77jDI8VMEHoApn8qDoZA==}
 
@@ -940,6 +949,10 @@ packages:
 
   decode-named-character-reference@1.3.0:
     resolution: {integrity: sha512-GtpQYB283KrPp6nRw50q3U9/VfOutZOe103qlN7BPP6Ad27xYnOIWv4lPzo8HCAL+mMZofJ9KEy30fq6MfaK6Q==}
+
+  deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
+    engines: {node: '>=0.10.0'}
 
   dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
@@ -1765,6 +1778,9 @@ packages:
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
+  sponge-case@2.0.3:
+    resolution: {integrity: sha512-i4h9ZGRfxV6Xw3mpZSFOfbXjf0cQcYmssGWutgNIfFZ2VM+YIWfD71N/kjjwK6X/AAHzBr+rciEcn/L34S8TGw==}
+
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
@@ -1808,6 +1824,9 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  swap-case@3.0.3:
+    resolution: {integrity: sha512-6p4op8wE9CQv7uDFzulI6YXUw4lD9n4oQierdbFThEKVWVQcbQcUjdP27W8XE7V4QnWmnq9jueSHceyyQnqQVA==}
+
   tailwindcss@3.4.19:
     resolution: {integrity: sha512-3ofp+LL8E+pK/JuPLPggVAIaEuhvIz4qNcf3nA1Xn2o/7fb7s/TYpHhwGDv1ZU3PkBluUVaF8PyCHcm48cKLWQ==}
     engines: {node: '>=14.0.0'}
@@ -1826,6 +1845,9 @@ packages:
   tinyglobby@0.2.15:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
+
+  title-case@3.0.3:
+    resolution: {integrity: sha512-e1zGYRvbffpcHIrnuqT0Dh+gEJtDaxDSoG4JAIpq4oDFyooziLBIiYQv0GBT4FUAnUop5uZ1hiIAj7oAF6sOCA==}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -2345,26 +2367,31 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@charcoal-ui/foundation@3.21.0': {}
+  '@charcoal-ui/foundation@4.18.0': {}
 
-  '@charcoal-ui/tailwind-config@3.21.0(csstype@3.2.3)(postcss@8.5.8)(tailwindcss@3.4.19(yaml@2.8.3))':
+  '@charcoal-ui/icon-files@4.18.0': {}
+
+  '@charcoal-ui/tailwind-config@4.18.0(csstype@3.2.3)(postcss@8.5.8)(tailwindcss@3.4.19(yaml@2.8.3))':
     dependencies:
-      '@charcoal-ui/foundation': 3.21.0
-      '@charcoal-ui/theme': 3.21.0
-      '@charcoal-ui/utils': 3.21.0
+      '@charcoal-ui/foundation': 4.18.0
+      '@charcoal-ui/icon-files': 4.18.0
+      '@charcoal-ui/theme': 4.18.0
+      '@charcoal-ui/utils': 4.18.0
       csstype: 3.2.3
       postcss: 8.5.8
       tailwindcss: 3.4.19(yaml@2.8.3)
 
-  '@charcoal-ui/theme@3.21.0':
+  '@charcoal-ui/theme@4.18.0':
     dependencies:
-      '@charcoal-ui/foundation': 3.21.0
-      '@charcoal-ui/utils': 3.21.0
+      '@charcoal-ui/foundation': 4.18.0
+      '@charcoal-ui/utils': 4.18.0
+      change-case-all: 2.1.0
+      deepmerge: 4.3.1
       polished: 4.3.1
 
-  '@charcoal-ui/utils@3.21.0':
+  '@charcoal-ui/utils@4.18.0':
     dependencies:
-      '@charcoal-ui/foundation': 3.21.0
+      '@charcoal-ui/foundation': 4.18.0
       polished: 4.3.1
 
   '@emmetio/abbreviation@2.3.3':
@@ -2964,6 +2991,15 @@ snapshots:
 
   chalk@5.6.2: {}
 
+  change-case-all@2.1.0:
+    dependencies:
+      change-case: 5.4.4
+      sponge-case: 2.0.3
+      swap-case: 3.0.3
+      title-case: 3.0.3
+
+  change-case@5.4.4: {}
+
   character-entities-html4@2.1.0: {}
 
   character-entities-legacy@3.0.0: {}
@@ -3039,6 +3075,8 @@ snapshots:
   decode-named-character-reference@1.3.0:
     dependencies:
       character-entities: 2.0.2
+
+  deepmerge@4.3.1: {}
 
   dequal@2.0.3: {}
 
@@ -4123,6 +4161,8 @@ snapshots:
 
   space-separated-tokens@2.0.2: {}
 
+  sponge-case@2.0.3: {}
+
   sprintf-js@1.0.3: {}
 
   stdin-discarder@0.2.2: {}
@@ -4168,6 +4208,8 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
+  swap-case@3.0.3: {}
+
   tailwindcss@3.4.19(yaml@2.8.3):
     dependencies:
       '@alloc/quick-lru': 5.2.0
@@ -4211,6 +4253,10 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
 
+  title-case@3.0.3:
+    dependencies:
+      tslib: 2.8.1
+
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
@@ -4225,8 +4271,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  tslib@2.8.1:
-    optional: true
+  tslib@2.8.1: {}
 
   type-fest@4.41.0: {}
 
